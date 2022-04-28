@@ -1,7 +1,6 @@
 package com.ccn.objectbox
 
 import android.content.Context
-import android.support.multidex.BuildConfig
 import android.util.Log
 import io.objectbox.BoxStore
 import io.objectbox.android.AndroidObjectBrowser

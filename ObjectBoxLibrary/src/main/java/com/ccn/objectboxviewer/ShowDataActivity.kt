@@ -13,10 +13,8 @@ import io.objectbox.Box
 
 class ShowDataActivity : AppCompatActivity() {
     private var stringBuilder: StringBuilder? = null
-    lateinit var boxStore: ArrayList<Box<*>>
+    private lateinit var boxStore: ArrayList<Box<*>>
     private var tableName = mutableListOf<String>()
-
-    //private var viewById: TextView? = null
     //private var scaletext: TouchScaleTextView? = null
     private var title: TextView? = null
     private var webview: WebView? = null
@@ -38,7 +36,6 @@ class ShowDataActivity : AppCompatActivity() {
     private fun initView() {
         initWebView()
         //scaletext = findViewById(R.id.scaletext)
-        //viewById = findViewById(R.id.text)
         title = findViewById<TextView>(R.id.page_title)
         title!!.text = "表数据"
         findViewById<ImageView>(R.id.page_back).setOnClickListener {
@@ -49,23 +46,27 @@ class ShowDataActivity : AppCompatActivity() {
     private fun initWebView() {
         webview = findViewById(R.id.webview)
         setting = webview!!.settings
-        setting?.setSupportZoom(true)
-        setting?.textSize = WebSettings.TextSize.SMALLER
-        setting?.builtInZoomControls = true;
-        setting?.displayZoomControls = false;
+        with(setting!!) {
+            setSupportZoom(true)
+            //textSize = WebSettings.TextSize.SMALLER
+            textZoom = 75
+            builtInZoomControls = true
+            displayZoomControls = false
+        }
         webview!!.isLongClickable = true
         webview!!.setOnLongClickListener { true }
     }
 
     private fun showDialog() {
         val builder = AlertDialog.Builder(this)
-        builder.setTitle("All Tables")
-        builder.setCancelable(false)
-        builder.setAdapter(object : ArrayAdapter<String?>(this, android.R.layout.simple_list_item_1, tableName.toList()) {}) { _, which ->
-            showTableData(which)
+        with(builder) {
+            setTitle("All Tables")
+            setCancelable(false)
+            setAdapter(object : ArrayAdapter<String?>(context, android.R.layout.simple_list_item_1, tableName.toList()) {}) { _, which ->
+                showTableData(which)
+            }
+            show()
         }
-        builder.show()
-
     }
 
     private fun showTableData(which: Int) {
@@ -85,7 +86,6 @@ class ShowDataActivity : AppCompatActivity() {
         }
         val data = "<html>${stringBuilder}</html>"
         webview!!.loadData(webViewBreak(data), "text/html; charset=UTF-8", null);
-        //viewById!!.text = stringBuilder
         //scaletext!!.text = stringBuilder
     }
 
