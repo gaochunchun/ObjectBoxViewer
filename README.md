@@ -36,6 +36,7 @@ android {
 }
 dependencies {
     ...
+    implementation project(path: ':ObjectBoxLibrary')
     debugImplementation "io.objectbox:objectbox-android-objectbrowser:$objectboxVersion"
 }
 apply plugin: 'io.objectbox'
