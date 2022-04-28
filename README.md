@@ -16,7 +16,6 @@ buildscript {
     }
     dependencies {
         classpath "com.android.tools.build:gradle:4.2.2"
-        classpath 'com.github.gaochunchun:PDAPlugin:lastVersion'
     }
 }
 
@@ -30,13 +29,15 @@ allprojects {
 
 Step 2. Add the dependency
 
-Add it in your **module** build.gradle at the top:
+Add it in your **module** build.gradle at the bottom:
 ```
-apply plugin: 'com.ccn.plugin'
-PDAPlugin {
-    name '指定项目名称，如：QiaoPai'          //(必须) AllProject目录下项目名称
-    pdaSDCardDirName '防伪追溯'             //(可选 非必须)Task所操作SDCard下的 防伪追溯 目录
-    s8_ZipXmlName '101379039353_1.0.1'     //(可选 非必须)超8平台重命名Xml文件和Zip文件时的文件名
+android {
+    ...
 }
+dependencies {
+    ...
+    debugImplementation "io.objectbox:objectbox-android-objectbrowser:$objectboxVersion"
+}
+apply plugin: 'io.objectbox'
 ```
 
