@@ -36,7 +36,8 @@ android {
 }
 dependencies {
     ...
-    implementation project(path: ':ObjectBoxLibrary')
+    //implementation project(path: ':ObjectBoxLibrary')
+    implementation 'com.github.gaochunchun:ObjectBoxViewer:Tag'
     debugImplementation "io.objectbox:objectbox-android-objectbrowser:$objectboxVersion"
 }
 apply plugin: 'io.objectbox'
