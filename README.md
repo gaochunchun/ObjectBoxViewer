@@ -1,6 +1,6 @@
-# PDAPlugin
-ccn pda plugin.
-#### Plugin安装教程
+# ObjectBoxViewer
+ObjectBox DB Viewer.
+#### 安装教程
 
 **1.Import**
 
