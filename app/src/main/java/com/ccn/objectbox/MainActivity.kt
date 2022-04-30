@@ -51,6 +51,10 @@ class MainActivity : BaseBindingActivity<ActivityMainBinding>() {
         binding.showData.setOnClickListener {
             startActivity(Intent(this, ShowDataActivity::class.java))
         }
+
+        binding.obdata.setOnClickListener {
+            startActivity(Intent(this, ShowDataActivity::class.java))
+        }
     }
 
     fun query() {
