@@ -20,7 +20,7 @@
             android:src="@mipmap/ic_back" />
 
         <TextView
-            android:id="@+id/page_title"
+            android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="48dp"
             android:layout_centerInParent="true"
@@ -30,7 +30,7 @@
             tools:text="标题名称" />
 
         <ImageView
-            android:id="@+id/page_more"
+            android:id="@+id/info"
             android:layout_width="wrap_content"
             android:layout_height="48dp"
             android:layout_alignParentRight="true"
@@ -44,39 +44,19 @@
     </RelativeLayout>
 
 
-<!--    <com.ccn.objectboxviewer.TouchScaleTextView
-        android:id="@+id/scaletext"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_centerInParent="true"
-        android:visibility="gone"
-        tools:text="针对针对针对针对针对针对针对针对针对针对针对针对" />-->
+    <!--    <com.ccn.objectboxviewer.widget.TouchScaleTextView
+            android:id="@+id/scaletext"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:visibility="gone"
+            tools:text="针对针对针对针对针对针对针对针对针对针对针对针对" />-->
 
 
     <WebView
         android:id="@+id/webview"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-
-    <HorizontalScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone">
-
-        <android.support.v4.widget.NestedScrollView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:padding="10dp">
-
-            <TextView
-                android:id="@+id/text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@android:color/holo_green_dark"
-                android:textSize="13dp"
-                tools:text="鞍山市鞍山市鞍山市鞍山市鞍山市鞍山市鞍山市鞍山市鞍山市鞍山市鞍山市" />
-        </android.support.v4.widget.NestedScrollView>
-    </HorizontalScrollView>
 
 </LinearLayout>
 

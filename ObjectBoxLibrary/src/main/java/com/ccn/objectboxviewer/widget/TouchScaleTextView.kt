@@ -1,4 +1,4 @@
-package com.ccn.objectboxviewer
+package com.ccn.objectboxviewer.widget
 
 import android.content.Context
 import android.support.v7.widget.AppCompatTextView
@@ -15,7 +15,6 @@ import android.view.MotionEvent
  * ===========================================
  */
 class TouchScaleTextView : AppCompatTextView {
-
     var mode = 0
     var mOldDist = 0f
     var mTextSize = 0f
@@ -72,6 +71,5 @@ class TouchScaleTextView : AppCompatTextView {
         val y = event.getX(0) - event.getX(1)
         return Math.sqrt((x * x + y * y).toDouble()).toFloat()
     }
-
 
 }

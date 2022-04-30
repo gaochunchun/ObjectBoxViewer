@@ -1,4 +1,4 @@
-package com.ccn.objectboxviewer
+package com.ccn.objectboxviewer.base
 
 import io.objectbox.Box
 import io.objectbox.BoxStore
@@ -19,9 +19,9 @@ object ObjectBoxViewer {
 
     @JvmStatic
     fun init(boxStore: BoxStore, classes: ArrayList<Class<*>>) {
-        this.mBoxStore = boxStore
+        mBoxStore = boxStore
         classes.forEach {
-            this.classes = classes
+            ObjectBoxViewer.classes = classes
             val box = mBoxStore?.boxFor(it)
             box?.let { boxes += box }
         }

@@ -1,18 +1,23 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-
 android {
     compileSdkVersion 28
     defaultConfig {
         minSdkVersion 16
         targetSdkVersion 28
     }
+
+    viewBinding {
+        enabled = true
+    }
+
 }
+
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:28.0.0'
-    debugImplementation "io.objectbox:objectbox-android-objectbrowser:$objectboxVersion"
+    //debugImplementation "io.objectbox:objectbox-android-objectbrowser:$objectboxVersion"
     releaseImplementation "io.objectbox:objectbox-android:$objectboxVersion"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
