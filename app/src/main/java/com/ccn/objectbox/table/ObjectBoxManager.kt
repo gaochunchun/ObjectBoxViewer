@@ -1,7 +1,8 @@
-package com.ccn.objectbox
+package com.ccn.objectbox.table
 
 import android.content.Context
 import android.util.Log
+import com.ccn.objectbox.BuildConfig
 import io.objectbox.BoxStore
 import io.objectbox.android.AndroidObjectBrowser
 
@@ -26,7 +27,7 @@ object ObjectBoxManager {
         if (BuildConfig.DEBUG) {
             //Terminal-> adb forward tcp:8090 tcp:8090  //浏览器录入：http://localhost:8090/index.html
             val started = AndroidObjectBrowser(boxStore).start(context)
-            Log.e("ObjectBox", "调试模式: " + started + "  " + boxStore.objectBrowserPort)
+            Log.e("ObjectBox", "Using ObjectBox ${BoxStore.getVersion()}  isDebug:$started ${boxStore.objectBrowserPort}")
         }
     }
 

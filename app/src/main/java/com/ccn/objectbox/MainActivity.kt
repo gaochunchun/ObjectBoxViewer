@@ -1,25 +1,27 @@
 package com.ccn.objectbox
 
 import android.content.Intent
-import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import android.widget.Button
-import com.ccn.objectboxviewer.ObjectBoxViewer
-import com.ccn.objectboxviewer.ShowDataActivity
+import com.ccn.objectbox.databinding.ActivityMainBinding
+import com.ccn.objectbox.table.BusinessSampleTable
+import com.ccn.objectbox.table.BusinessSampleTable2
+import com.ccn.objectbox.table.BusinessSampleTable_
+import com.ccn.objectbox.table.ObjectBoxManager
+import com.ccn.objectboxviewer.activity.ShowDataActivity
+import com.ccn.objectboxviewer.base.BaseBindingActivity
 import io.objectbox.Box
+import io.objectbox.kotlin.inValues
+import io.objectbox.query.QueryBuilder
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseBindingActivity<ActivityMainBinding>() {
     var boxManager: Box<BusinessSampleTable> = ObjectBoxManager.get().boxFor(BusinessSampleTable::class.java)
+    var boxManager2: Box<BusinessSampleTable2> = ObjectBoxManager.get().boxFor(BusinessSampleTable2::class.java)
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        initView()
-    }
 
-    private fun initView() {
+    override fun getViewBinding() = ActivityMainBinding.inflate(layoutInflater)
+
+    override fun initData() {
         //add
-        findViewById<Button>(R.id.addData).setOnClickListener {
+        binding.addData.setOnClickListener {
             for (i in 1..10) {
                 val data = BusinessSampleTable()
                 data.orderNo = "20220102$i"
@@ -34,11 +36,28 @@ class MainActivity : AppCompatActivity() {
                 boxManager.put(data)
                 println(data.toString())
             }
+
+            for (i in 1..10) {
+                val data = BusinessSampleTable2()
+                data.orderNo = "20220102$i"
+                data.code = "${i}1111111"
+                data.productName = "产品名称${i}"
+                boxManager2.put(data)
+                println(data.toString())
+            }
         }
 
         //show
-        findViewById<Button>(R.id.showData).setOnClickListener {
+        binding.showData.setOnClickListener {
             startActivity(Intent(this, ShowDataActivity::class.java))
         }
     }
+
+    fun query() {
+        boxManager.query().run {
+            inValues(BusinessSampleTable_.orderNo, arrayOf("1", "2"), QueryBuilder.StringOrder.CASE_SENSITIVE)
+            build()
+        }.find()
+    }
+
 }

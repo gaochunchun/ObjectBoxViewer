@@ -34,6 +34,9 @@ android {
         // but continue the build even when errors are found:
         abortOnError false     //This is important, it will run lint checks but won't abort build
     }
+    viewBinding {
+        enabled = true
+    }
 }
 
 dependencies {

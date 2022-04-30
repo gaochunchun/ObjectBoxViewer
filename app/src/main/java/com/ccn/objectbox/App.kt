@@ -1,8 +1,10 @@
 package com.ccn.objectbox
 
 import android.app.Application
-import com.ccn.objectboxviewer.ObjectBoxViewer
-import io.objectbox.BoxStore
+import com.ccn.objectbox.table.BusinessSampleTable
+import com.ccn.objectbox.table.BusinessSampleTable2
+import com.ccn.objectbox.table.ObjectBoxManager
+import com.ccn.objectboxviewer.base.ObjectBoxViewer
 
 class App : Application() {
     override fun onCreate() {
