@@ -53,10 +53,24 @@
             tools:text="针对针对针对针对针对针对针对针对针对针对针对针对" />-->
 
 
-    <WebView
-        android:id="@+id/webview"
+    <com.ccn.objectboxviewer.widget.FloatLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent">
+
+        <WebView
+            android:id="@+id/webview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <ImageView
+            android:id="@+id/delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="30dp"
+            android:src="@mipmap/del" />
+    </com.ccn.objectboxviewer.widget.FloatLayout>
 
 </LinearLayout>
 

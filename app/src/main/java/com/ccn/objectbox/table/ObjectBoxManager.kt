@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.Log
 import com.ccn.objectbox.BuildConfig
 import io.objectbox.BoxStore
+import io.objectbox.DebugFlags
 import io.objectbox.android.AndroidObjectBrowser
 
 /**
@@ -22,6 +23,7 @@ object ObjectBoxManager {
     fun init(context: Context) {
         boxStore = MyObjectBox.builder()
             .androidContext(context.applicationContext)
+            .debugFlags(DebugFlags.LOG_QUERY_PARAMETERS)
             .name(DBNAME)
             .build()
         if (BuildConfig.DEBUG) {

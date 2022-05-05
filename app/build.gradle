@@ -49,4 +49,9 @@ dependencies {
     //implementation 'com.github.gaochunchun:ObjectBoxViewer:1.2'
     //debugImplementation "io.objectbox:objectbox-android-objectbrowser:$objectboxVersion"
     //releaseImplementation "io.objectbox:objectbox-android:$objectboxVersion"
+
+    //implementation "io.objectbox:objectbox-android:$objectboxVersion"
+    //implementation "io.objectbox:objectbox-kotlin:$objectboxVersion"
+
+
 }

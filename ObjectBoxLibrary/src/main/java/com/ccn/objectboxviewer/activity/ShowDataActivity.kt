@@ -14,6 +14,7 @@ class ShowDataActivity : BaseBindingActivity<MainBinding>() {
     private lateinit var boxStore: ArrayList<Box<*>>
     private var tableName = mutableListOf<String>()
     private var setting: WebSettings? = null
+    private lateinit var box: Box<*>
 
     override fun getViewBinding() = MainBinding.inflate(layoutInflater)
 
@@ -22,6 +23,19 @@ class ShowDataActivity : BaseBindingActivity<MainBinding>() {
         binding.title.text = "表数据"
         binding.pageBack.setOnClickListener { finish() }
         binding.info.setOnClickListener { showInfoDialog() }
+        binding.delete.setOnClickListener {
+            val builder = AlertDialog.Builder(this)
+            with(builder) {
+                setTitle("提示")
+                setMessage("确认要删除该表中的数据吗？")
+                setPositiveButton("确定") { _, _ ->
+                    remove(box)
+                    showBoxData(box)
+                }
+                setNegativeButton("取消") { _, _ -> }
+                show()
+            }
+        }
         boxStore = ObjectBoxViewer.getBoxes()
         val classes = ObjectBoxViewer.getClasses()
         classes?.forEach {
@@ -61,7 +75,7 @@ class ShowDataActivity : BaseBindingActivity<MainBinding>() {
         val builder = AlertDialog.Builder(this)
         with(builder) {
             setTitle("ObjectBox")
-            setMessage("${BoxStore.getVersion()}\n${BoxStore.getVersionNative()}")
+            setMessage("${BoxStore.getVersion()}\n${BoxStore.getVersionNative()}\n\nThe library author：gaochun")
             show()
         }
     }
@@ -69,7 +83,7 @@ class ShowDataActivity : BaseBindingActivity<MainBinding>() {
     private fun showTableData(which: Int) {
         binding.title.text = tableName[which]
         if (which < boxStore.size) {
-            val box = boxStore[which]
+            box = boxStore[which]
             showBoxData(box)
         }
     }
@@ -89,6 +103,10 @@ class ShowDataActivity : BaseBindingActivity<MainBinding>() {
         binding.webview.loadData(webViewBreak(data), "text/html; charset=UTF-8", null);
     }
 
+    private fun remove(box: Box<*>) {
+        if (!box.isEmpty) box.removeAll()
+    }
+
     //显示富文本，自动换行处理
     private fun webViewBreak(data: String): String {
         if (data.contains("<p>") && data.contains("</p>")) {
@@ -96,6 +114,4 @@ class ShowDataActivity : BaseBindingActivity<MainBinding>() {
         }
         return data
     }
-
-
 }
