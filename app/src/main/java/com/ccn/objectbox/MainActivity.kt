@@ -6,7 +6,6 @@ import com.ccn.objectbox.table.*
 import com.ccn.objectboxviewer.activity.ShowDataActivity
 import com.ccn.objectboxviewer.base.BaseBindingActivity
 import io.objectbox.Box
-import io.objectbox.kotlin.inValues
 import io.objectbox.kotlin.query
 import io.objectbox.query.QueryBuilder
 
@@ -62,20 +61,20 @@ class MainActivity : BaseBindingActivity<ActivityMainBinding>() {
     }
 
     fun query() {
-
+        test()
 
         val pq = boxManager2.query().build().property(BusinessSampleTable2_.orderNo)
 
         // returns ['joe'] because by default, the case of strings is ignored.
         val names = pq.distinct().findStrings()
         names.forEach {
-            println("names:$it")
+            //println("names:$it")
         }
 
         // returns ['Joe', 'joe', 'JOE']
         val names2 = pq.distinct(QueryBuilder.StringOrder.CASE_SENSITIVE).findStrings()
         names2.forEach {
-            println("names2 : $it")
+            //println("names2 : $it")
         }
 
         // the query can be configured to throw there is more than one value
@@ -85,21 +84,34 @@ class MainActivity : BaseBindingActivity<ActivityMainBinding>() {
         }*/
 
         //println("$names $names2 $names3")
-        val b = boxManager.query().run {
-            inValues(BusinessSampleTable_.orderNo, arrayOf("1", "2"), QueryBuilder.StringOrder.CASE_SENSITIVE)
-            equal(BusinessSampleTable_.orderNo, "11111", QueryBuilder.StringOrder.CASE_SENSITIVE)
-            build()
-        }.find()
+        /* val b = boxManager.query().run {
+             inValues(BusinessSampleTable_.orderNo, arrayOf("1", "2"), QueryBuilder.StringOrder.CASE_SENSITIVE)
+             equal(BusinessSampleTable_.orderNo, "11111", QueryBuilder.StringOrder.CASE_SENSITIVE)
+             build()
+         }.find()
 
 
-        val a = boxManager2.query {
-            notNull(BusinessSampleTable2_.orderNo)
-        }.find()
-        a.forEach(::println)
+         val a = boxManager2.query {
+             notNull(BusinessSampleTable2_.orderNo)
+         }.find()
+         a.forEach(::println)*/
     }
 
     private fun remove() {
         boxManager2.removeAll()
+    }
+
+
+    fun test() {
+        val result = boxManager.query {
+            notNull(BusinessSampleTable_.code)
+            equal(BusinessSampleTable_.code, "1111111", QueryBuilder.StringOrder.CASE_SENSITIVE)
+        }.find()
+
+
+        //result.forEach(::println)
+        System.err.println(result.any { it.code == "11111111" })
+        //System.err.println(result)
     }
 
 }
