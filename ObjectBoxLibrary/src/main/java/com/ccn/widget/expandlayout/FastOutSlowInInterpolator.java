@@ -1,20 +1,6 @@
-package com.ccn.objectboxviewer.widget.expandablelayout;
+package com.ccn.widget.expandlayout;
 
-/**
- * Interpolator corresponding to {@link android.R.interpolator#fast_out_slow_in}.
- * <p>
- * Uses a lookup table for the Bezier curve from (0,0) to (1,1) with control points:
- * P0 (0, 0)
- * P1 (0.4, 0)
- * P2 (0.2, 1.0)
- * P3 (1.0, 1.0)
- */
 public class FastOutSlowInInterpolator extends LookupTableInterpolator {
-
-    /**
-     * Lookup table values sampled with x at regular intervals between 0 and 1 for a total of
-     * 201 points.
-     */
     private static final float[] VALUES = new float[]{
             0.0000f, 0.0001f, 0.0002f, 0.0005f, 0.0009f, 0.0014f, 0.0020f,
             0.0027f, 0.0036f, 0.0046f, 0.0058f, 0.0071f, 0.0085f, 0.0101f,
@@ -50,5 +36,4 @@ public class FastOutSlowInInterpolator extends LookupTableInterpolator {
     public FastOutSlowInInterpolator() {
         super(VALUES);
     }
-
 }

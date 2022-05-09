@@ -1,4 +1,4 @@
-package com.ccn.objectboxviewer.widget.expandablelayout
+package com.ccn.widget.expandlayout
 
 import android.animation.Animator
 import android.animation.Animator.AnimatorListener
@@ -29,11 +29,6 @@ class ExpandLayout constructor(context: Context?, attrs: AttributeSet? = null) :
     private var expansion = 0f
     private var orientation = 0
 
-    /**
-     * Get expansion state
-     *
-     * @return one of [State]
-     */
     var state = 0
     private var interpolator: Interpolator = FastOutSlowInInterpolator()
     private var animator: ValueAnimator? = null
@@ -91,9 +86,6 @@ class ExpandLayout constructor(context: Context?, attrs: AttributeSet? = null) :
         super.onConfigurationChanged(newConfig)
     }
 
-    /**
-     * Convenience method - same as calling setExpanded(expanded, true)
-     */
     var isExpanded: Boolean
         get() = state == State.EXPANDING || state == State.EXPANDED
         set(expand) {
@@ -168,9 +160,7 @@ class ExpandLayout constructor(context: Context?, attrs: AttributeSet? = null) :
         }
     }
 
-    fun getParallax(): Float {
-        return parallax
-    }
+    fun getParallax() = parallax
 
     private fun setParallax(parallax: Float) {
         // Make sure parallax is between 0 and 1
@@ -209,10 +199,8 @@ class ExpandLayout constructor(context: Context?, attrs: AttributeSet? = null) :
 
     interface OnExpansionUpdateListener {
         /**
-         * Callback for expansion updates
-         *
-         * @param expansionFraction Value between 0 (collapsed) and 1 (expanded) representing the the expansion progress
-         * @param state             One of [State] repesenting the current expansion state
+         * @param expansionFraction 值介于0(折叠)和1(展开)之间，表示展开的进度
+         * @param state             当前扩展状态
          */
         fun onExpansionUpdate(expansionFraction: Float, state: Int)
     }

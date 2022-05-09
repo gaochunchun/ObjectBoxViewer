@@ -1,4 +1,4 @@
-package com.ccn.objectboxviewer.widget
+package com.ccn.widget
 
 import android.content.Context
 import android.support.v7.widget.AppCompatTextView
@@ -19,14 +19,11 @@ class TouchScaleTextView : AppCompatTextView {
     var mOldDist = 0f
     var mTextSize = 0f
 
-    constructor(context: Context) : super(context) {
-    }
+    constructor(context: Context) : super(context)
 
-    constructor(context: Context, attributes: AttributeSet) : super(context, attributes) {
-    }
+    constructor(context: Context, attributes: AttributeSet) : super(context, attributes)
 
-    constructor(context: Context, attributes: AttributeSet, defStyle: Int) : super(context, attributes, defStyle) {
-    }
+    constructor(context: Context, attributes: AttributeSet, defStyle: Int) : super(context, attributes, defStyle)
 
     override fun onTouchEvent(event: MotionEvent?): Boolean {
         if (mTextSize == 0f) {

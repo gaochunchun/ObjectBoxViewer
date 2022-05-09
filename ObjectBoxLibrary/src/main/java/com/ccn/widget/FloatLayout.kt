@@ -1,4 +1,4 @@
-package com.ccn.objectboxviewer.widget
+package com.ccn.widget
 
 import android.annotation.SuppressLint
 import android.content.Context

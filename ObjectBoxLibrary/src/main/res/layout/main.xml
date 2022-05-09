@@ -44,7 +44,7 @@
     </RelativeLayout>
 
 
-    <!--    <com.ccn.objectboxviewer.widget.TouchScaleTextView
+    <!--    <com.ccn.widget.TouchScaleTextView
             android:id="@+id/scaletext"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -53,7 +53,7 @@
             tools:text="针对针对针对针对针对针对针对针对针对针对针对针对" />-->
 
 
-    <com.ccn.objectboxviewer.widget.FloatLayout
+    <com.ccn.widget.FloatLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -70,7 +70,7 @@
             android:layout_alignParentBottom="true"
             android:layout_margin="30dp"
             android:src="@mipmap/del" />
-    </com.ccn.objectboxviewer.widget.FloatLayout>
+    </com.ccn.widget.FloatLayout>
 
 </LinearLayout>
 
